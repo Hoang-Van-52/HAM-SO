@@ -1,0 +1,576 @@
+\documentclass[12pt,a4paper]{article}
+%\usepackage[utf8]{inputenc}
+%\usepackage[vietnamese]{babel}
+\usepackage{amsmath, amsfonts, amssymb}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{booktabs}
+\usepackage{geometry}
+\geometry{left=3cm, right=2cm, top=2.5cm, bottom=2.5cm}
+ % Gói hỗ trợ vẽ khung và trang trí
+\usepackage[most]{tcolorbox}
+\usepackage{titlesec}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue!70!black,
+    urlcolor=blue!70!black,
+    citecolor=red!70!black
+}
+
+% Định dạng tiêu đề phần / mục
+\titleformat{\section}{\large\bfseries\color{blue!80!black}}{\thesection.}{0.5em}{}
+\titleformat{\subsection}{\normalfont\bfseries\color{blue!60!black}}{\thesubsection.}{0.5em}{}
+
+% Thiết lập khung Bài toán & Chú ý
+\newtcolorbox{problembox}[1]{
+    colback=blue!5!white,
+    colframe=blue!75!black,
+    fonttitle=\bfseries,
+    title=#1,
+    arc=2mm,
+    boxrule=0.8pt,
+    left=3mm, right=3mm, top=2mm, bottom=2mm
+}
+
+\newtcolorbox{notebox}{
+    colback=yellow!10!white,
+    colframe=orange!85!black,
+    fonttitle=\bfseries,
+    title=Chú ý quan trọng,
+    arc=1mm,
+    boxrule=0.6pt
+}
+
+\title{\LARGE \textbf{DỰ ÁN: ỨNG DỤNG CỦA HÀM SỐ VÀ ĐẠO HÀM TRONG GIẢI QUYẾT CÁC BÀI TOÁN THỰC TIỄN}}
+\author{\textbf{Sinh viên thực hiện:} Hoàng Thị Cẩm Vân\\ 
+\textbf{Mã số sinh viên:} 23S1010050 \\ 
+\textbf{Lớp:} Toán 4A }
+\date{\today}
+
+\begin{document}
+
+\maketitle
+\thispagestyle{empty}
+\newpage
+
+\pagenumbering{roman}
+\tableofcontents
+\newpage
+
+\pagenumbering{arabic}
+
+\section*{Lời mở đầu}
+\addcontentsline{toc}{section}{Lời mở đầu}
+
+Trong dòng chảy phát triển của khoa học và công nghệ, Toán học không chỉ dừng lại ở những con số khô khan hay các công thức lý thuyết trên giảng đường, mà còn là công cụ tư duy sắc bén để giải quyết các bài toán thực tế. Trong đó, hàm số và đạo hàm đóng vai trò là một trong những trụ cột quan trọng nhất của Giải tích, cho phép con người mô hình hóa và phân tích sự biến thiên của thế giới xung quanh.
+
+Từ việc xác định tốc độ tăng trưởng của quần thể sinh vật trong Sinh học, tối ưu hóa chi phí sản xuất và lợi nhuận trong Kinh tế, cho đến việc tính toán quỹ đạo chuyển động trong Vật lý hay quy hoạch không gian trong Kiến trúc, tất cả đều mang dấu ấn đậm nét của việc ứng dụng đạo hàm. Việc thấu hiểu bản chất và khả năng ứng dụng của đạo hàm không chỉ giúp nâng cao năng lực tư duy toán học, mà còn mở ra góc nhìn đa chiều về tính thực tiễn của Toán học trong đời sống.
+
+Xuất phát từ lý do trên, dự án \textbf{"Ứng dụng hàm số và đạo hàm để giải quyết các bài toán thực tiễn"} được thực hiện nhằm hệ thống hóa các cơ sở lý thuyết cốt lõi, đồng thời phân tích chi tiết các dạng bài toán ứng dụng điển hình trong nhiều lĩnh vực, qua đó khẳng định giá trị thực tiễn to lớn của công cụ toán học này.
+
+\subsection*{1. Lý do chọn đề tài}
+Toán học không chỉ là một môn khoa học thuần túy lý thuyết mà còn là công cụ mạnh mẽ dùng để giải quyết các vấn đề phức tạp trong đời sống thực tiễn. Trong chương trình Toán học phổ thông cũng như đại học, \textbf{Hàm số và Đạo hàm} đóng vai trò là một trong những mảng kiến thức cốt lõi, có tính ứng dụng đa dạng và thực tế nhất. 
+
+Các khái niệm như tính đơn điệu, cực trị, giá trị lớn nhất và giá trị nhỏ nhất của hàm số không chỉ giúp mô tả sự biến thiên của các đại lượng mà còn là cơ sở để giải quyết các bài toán tối ưu hóa, một bài toán mang tính chiến lược trong nhiều lĩnh vực: từ kinh tế (tối ưu doanh thu, giảm thiểu chi phí), vật lý (chuyển động, vận tốc, gia tốc), cho đến sinh học và hình học không gian.
+
+Tuy nhiên, thực tế cho thấy nhiều học sinh và người học thường gặp khó khăn trong việc chuyển đổi một bài toán thực tế thành bài toán mô hình hóa toán học bằng ngôn ngữ hàm số và đạo hàm. Xuất phát từ tầm quan trọng của tính ứng dụng thực tiễn và mong muốn hệ thống hóa các dạng toán mô hình hóa, tác giả đã lựa chọn đề tài: \textbf{"Ứng dụng của Hàm số và Đạo hàm trong giải quyết các bài toán thực tiễn"} làm nội dung nghiên cứu cho dự án này.
+
+\subsection*{2. Mục tiêu nghiên cứu}
+\begin{itemize}
+    \item \textbf{Về lý thuyết:} Hệ thống hóa lại toàn bộ cơ sở lý thuyết trọng tâm về hàm số và đạo hàm (tính đơn điệu, cực trị, GTLN và GTNN).
+    \item \textbf{Về ứng dụng:} Phân tích, phân loại và mô hình hóa các bài toán thực tiễn trong từng lĩnh vực cụ thể như Kinh tế học, Vật lý, Hóa học, Sinh học và Hình học.
+    \item \textbf{Về thực hành:} Xây dựng hệ thống các bài tập minh họa có lời giải chi tiết, qua đó cung cấp quy trình từng bước giúp người đọc vận dụng linh hoạt đạo hàm để tìm ra giải pháp tối ưu cho bài toán thực tế.
+\end{itemize}
+
+\subsection*{3. Đối tượng nghiên cứu}
+\begin{itemize}
+    \item Ứng dụng của hàm số, đạo hàm và phương pháp tối ưu hóa bằng công cụ đạo hàm trong các bài toán thực tiễn.
+\end{itemize}
+
+\subsection*{4. Phạm vi nghiên cứu}
+\begin{itemize}
+    \item \textbf{Phạm vi nội dung:} Tập trung vào các hàm số một biến số $y = f(x)$, ứng dụng các phép tính đạo hàm cơ bản và nâng cao để khảo sát tính đơn điệu, cực trị và bài toán cực trị (GTLN, GTNN).
+    \item \textbf{Phạm vi ứng dụng:}
+    \begin{itemize}
+        \item \textit{Kinh tế học:} Tối ưu hóa doanh thu, lợi nhuận, chi phí sản xuất.
+        \item \textit{Vật lý & Cơ học:} Các bài toán liên quan đến chuyển động, vận tốc, gia tốc, thời gian và quãng đường ngắn nhất.
+        \item \textit{Hình học:} Tối ưu hóa diện tích xung quanh, diện tích toàn phần, thể tích các hình khối.
+        \item \textit{Sinh học & Hóa học:} Mô hình hóa tốc độ phát triển quần thể, nồng độ chất phản ứng.
+    \end{itemize}
+\end{itemize}
+
+\subsection*{5. Phương pháp nghiên cứu}
+\begin{itemize}
+    \item \textbf{Phương pháp nghiên cứu lý thuyết:} Thu thập, đọc, phân tích và tổng hợp các tài liệu giáo trình, sách giáo khoa, bài báo khoa học liên quan đến hàm số và đạo hàm.
+    \item \textbf{Phương pháp mô hình hóa toán học:} Chuyển đổi ngôn ngữ thực tiễn của bài toán thành ngôn ngữ hàm số toán học, giải quyết bài toán bằng công cụ đạo hàm và nghiệm lại kết quả thực tế.
+    \item \textbf{Phương pháp phân loại và hệ thống hóa:} Sắp xếp các dạng bài toán thực tế theo từng chuyên ngành cụ thể để tạo thành khung tài liệu dễ tra cứu và ứng dụng.
+\end{itemize}
+
+\newpage
+
+\section{Chương 1: Cơ sở lý thuyết về Hàm số}
+
+\subsection{Tính đơn điệu của hàm số}
+
+\paragraph{a) Hàm số đồng biến, hàm số nghịch biến}
+Ký hiệu $K$ là một khoảng, nửa khoảng hoặc một đoạn thuộc tập xác định.
+\begin{itemize}
+    \item Hàm số $f(x)$ được gọi là \textbf{đồng biến (tăng)} trên $K$ nếu với mọi cặp $x_1, x_2 \in K$ mà $x_1 < x_2$ thì $f(x_1) < f(x_2)$.
+    \item Hàm số $f(x)$ được gọi là \textbf{nghịch biến (giảm)} trên $K$ nếu với mọi cặp $x_1, x_2 \in K$ mà $x_1 < x_2$ thì $f(x_1) > f(x_2)$.
+\end{itemize}
+
+\noindent\textbf{Nhận xét:}
+\begin{itemize}
+    \item Nếu hàm số $y=f(x)$ đồng biến trên $K$ thì đồ thị của nó đi lên từ trái sang phải khi $x \in K$.
+    \item Nếu hàm số $y=f(x)$ nghịch biến trên $K$ thì đồ thị của nó đi xuống từ trái sang phải khi $x \in K$.
+    \begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.8\textwidth]{hinh1.png}
+    \label{fig:hinh1.png}
+    \end{figure}
+    \item Hàm số đồng biến hoặc nghịch biến trên $K$ được gọi chung là \textbf{đơn điệu} trên $K$.
+\end{itemize}
+
+\paragraph{b) Định lý dấu của đạo hàm}
+Cho hàm số $y=f(x)$ có đạo hàm trên khoảng $K$.
+\begin{itemize}
+    \item Nếu $f'(x) > 0$ với mọi $x \in K$ thì hàm số $f(x)$ đồng biến trên $K$.
+    \item Nếu $f'(x) < 0$ với mọi $x \in K$ thì hàm số $f(x)$ nghịch biến trên $K$.
+\end{itemize}
+
+\begin{notebox}
+\begin{itemize}
+    \item Định lý trên mở rộng cho $f'(x) \ge 0$ (hoặc $f'(x) \le 0$) nếu $f'(x) = 0$ tại một số hữu hạn điểm thuộc $K$.
+    \item Nếu $f'(x) = 0$ với mọi $x \in K$ thì $f(x)$ là hàm hằng trên $K$.
+\end{itemize}
+\end{notebox}
+
+\paragraph{c) Các bước xét tính đơn điệu}
+\begin{enumerate}
+    \item \textbf{Bước 1:} Tìm tập xác định $D$ của hàm số.
+    \item \textbf{Bước 2:} Tính đạo hàm $f'(x)$. Tìm các điểm $x_i \in D$ làm cho $f'(x) = 0$ hoặc $f'(x)$ không xác định.
+    \item \textbf{Bước 3:} Sắp xếp các điểm theo thứ tự tăng dần và lập bảng biến thiên.
+    \item \textbf{Bước 4:} Kết luận các khoảng đồng biến, nghịch biến.
+\end{enumerate}
+
+\subsection{Cực trị của hàm số}
+
+\paragraph{a) Khái niệm cực trị}
+Cho hàm số $f(x)$ xác định trên $D$ và $x_0 \in D$:
+\begin{itemize}
+    \item Nếu tồn tại khoảng $(a;b) \subset D$ chứa $x_0$ sao cho $f(x) < f(x_0), \forall x \in (a;b) \setminus \{x_0\}$ thì $x_0$ là \textbf{điểm cực đại}, $f(x_0)$ là \textbf{giá trị cực đại} ($y_{\text{CĐ}}$).
+    \item Nếu tồn tại khoảng $(a;b) \subset D$ chứa $x_0$ sao cho $f(x) > f(x_0), \forall x \in (a;b) \setminus \{x_0\}$ thì $x_0$ là \textbf{điểm cực tiểu}, $f(x_0)$ là \textbf{giá trị cực tiểu} ($y_{\text{CT}}$).
+\end{itemize}
+
+\paragraph{b) Định lý dấu đạo hàm đổi qua cực trị}
+Cho hàm số $y=f(x)$ liên tục trên $(a;b)$ chứa $x_0$ và có đạo hàm trên $(a;x_0)$ và $(x_0;b)$:
+\begin{itemize}
+    \item Nếu $f'(x) < 0, \forall x \in (a;x_0)$ và $f'(x) > 0, \forall x \in (x_0;b)$ thì hàm số đạt \textbf{cực tiểu} tại $x_0$.
+    \item Nếu $f'(x) > 0, \forall x \in (a;x_0)$ và $f'(x) < 0, \forall x \in (x_0;b)$ thì hàm số đạt \textbf{cực đại} tại $x_0$.
+\end{itemize}
+\textbf{Lưu ý:} Định lý trên có thể thể hiện qua bảng biến thiên sau đây
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=1\textwidth]{hinh3.png}
+    \label{fig:hinh3.png}
+    \end{figure}
+\subsection{Giá trị lớn nhất và giá trị nhỏ nhất}
+
+\paragraph{a) Định nghĩa}
+Cho hàm số $y=f(x)$ xác định trên tập $D$.
+\begin{itemize}
+    \item $M = \max\limits_{D} f(x) \iff f(x) \le M, \forall x \in D \text{ và } \exists x_0 \in D: f(x_0) = M$.
+    \item $m = \min\limits_{D} f(x) \iff f(x) \ge m, \forall x \in D \text{ và } \exists x_0 \in D: f(x_0) = m$.
+\end{itemize}
+\textbf{Lưu ý:}
+\begin{itemize}
+\item Khi nói  đến giá trị lớn nhất, giá trị nhỏ nhất của một hàm số thì ta hiểu đó là giá trị lớn nhất, giá trị nhỏ nhất của hàm số trên tập xác định của nó.
+\item Ta có thể tìm giá trị lớn nhất, giá trị nhỏ nhất của một hàm số bằng cách dựa vào đồ thị hoặc dựa vào bảng biến thiên của nó.
+\end{itemize}
+
+\paragraph{b) Phương pháp tìm GTLN, GTNN trên đoạn $[a;b]$}
+\begin{enumerate}
+    \item Tính $y' = f'(x)$. Tìm các nghiệm $x_i \in (a;b)$ làm cho $f'(x) = 0$ hoặc không xác định.
+    \item Tính $f(a)$, $f(b)$ và các $f(x_i)$.
+    \item So sánh các giá trị tính được để kết luận $\max\limits_{[a;b]} f(x)$ và $\min\limits_{[a;b]} f(x)$.
+\end{enumerate}
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.5\textwidth]{hinh2.png}
+    \label{fig:hinh2.png}
+    \end{figure}
+\textbf {Chú ý:}
+\begin{itemize}
+\item Mọi hàm số liên tục trên đoạn $[a;b]$ thì chúng đều có giá trị lớn nhất, giá trị nhỏ nhất trên đoạn $[a;b]$
+\item Nếu hàm số $y=f(x)$ đồng biến trên đoạn $[a;b]$ thì $f(a) \le f(x) \le f(b)$ hay 
+\begin{cases}
+\max\limits_{[a;b]} f(x)=f(b)\\
+\min\limits_{[a;b]} f(x)=f(a)
+\end{cases}
+\end{itemize}
+\textbf{Bài toán:} Tìm giá trị lớn nhất, giá trị nhỏ nhất của hàm số trên một khoảng hoặc nửa khoảng
+\begin{itemize}
+\item\textbf{Bước 1:} Tính $y'=f'(x)$.
+Tìm các nghiệm $x_i \in (a;b), i=1,2,3,...$ mà tại đó đạo hàm bằng $0$ hoặc không tồn tại.
+\item\textbf{Bước 2:} Lập bảng biến thiên của hàm số trên khoảng hoặc nửa khoảng đã cho.
+\item\textbf{Bước 3:} Dựa vào bảng biến thiên để kết luận về giá trị lớn nhất, giá trị nhỏ nhất của hàm số trên nửa khoảng cho trước.
+\end{itemize}
+
+\newpage
+
+\section{Chương 2: Ứng dụng Hàm số trong thực tiễn}
+
+\subsection{Ứng dụng trong Kinh tế học}
+Toán học, đặc biệt là đạo hàm, đóng vai trò nền tảng trong kinh tế học hiện đại để mô hình hóa hành vi và tìm phương án tối ưu hóa.
+Trong nền kinh tế thị trường hiện đại, sự canh tranh gay gắt đòi hỏi các doanh nghiệp không chỉ chú trọng đến quy mô sản xuất mà còn phải tối ưu hóa các chi phí và nguồn lực để đạt hiệu quả kinh doanh cao nhất. Toán học, đặc biệt là công cụ giải tích với lý thuyết về hàm số, đóng vai trò nền tảng trong việc mô hình hóa các hiện tượng kinh tế và đưa ra các quyết định định lượng chính xác
+\begin{itemize}
+    \item  Để đánh giá hiệu quả thương mại của sản phẩm trên thị trường, yếu tố đầu tiên cần xem xét là tổng nguồn thu từ lượng hàng hóa tiêu thụ. Về mặt bản chất, tiền thu về bằng tích của số lượng hàng bán được và mức giá tương ứng tại thời điểm đó. Do đó, mối quan hệ giữa sản lượng $x$ và tổng doanh thu được biểu diễn qua hàm số:
+    $$(x)=x.p(x)$$
+Trong đó:    
+\begin{itemize}
+\item[+] $x$: số lượng sản phẩm được bán ra $(x>0)$
+\item[+] $p(x)$: Hàm cầu (giá bán trên một đơn vị sản phẩm theo sản lượng $x$)
+\item[+] $R(x)$: Tổng doanh thu đạt được  
+\end{itemize}
+\item Hiệu quả hoạt động của doanh nghiệp được đo lường bằng khoảng chênh lệch giữa nguồn thu nhập đạt được và chi phí sản xuất bỏ ra. Khi đó, mối quan hệ giữa lợi nhuận  $P(x)$ và sản lượng $x$ được biểu diễn bằng biểu thức:
+
+\begin{itemize}
+    \item \textbf{Hàm Doanh thu:} $R(x) = x \cdot p(x)$ \textit{(với $x > 0$ là sản lượng, $p(x)$ là hàm cầu/giá bán).}
+    \item \textbf{Hàm Lợi nhuận:} $P(x) = R(x) - C(x)$ \textit{(với $C(x)$ là tổng chi phí sản xuất).}
+    \item  Sau khi thiết lập được hàm lợi nhuận $P(x)=R(x)-C(x)$, vấn đề mang tính quyết định đối với nhà quản trị là xác định chính xác mực sản lượng $x$ sao cho lượng tiền thu về là lớn nhất. Do đó, bài toán tối ưu hóa lợi nhuận được phát biểu và giải quyết theo các điều kiện sau:
+    \textbf{$P'(x)$ (Lợi nhuận biên)}: Lợi nhuận kiếm thêm được từ sản phẩm thứ $x+1$
+
+    Dựa vào dấu của  $P'(x)$ để quyết định:
+    \item \textbf{Điều kiện tối ưu lợi nhuận (Lợi nhuận biên $P'(x)$):}
+    \begin{itemize}
+        \item $P'(x) > 0$: Lợi nhuận đang tăng $\implies$ Tiếp tục gia tăng sản lượng.
+        \item $P'(x) < 0$: Lợi nhuận giảm $\implies$ Cần giảm sản lượng.
+        \item $P'(x) = 0 \iff R'(x) = C'(x)$: Doanh thu biên bằng Chi phí biên (điểm đạt cực trị lợi nhuận).
+    \end{itemize}
+\end{itemize}
+\end{itemize}
+
+\subsection{Ứng dụng trong Vật lý}
+\begin{itemize}
+    \item \textbf{Cơ học chuyển động:}
+    Nếu như Toán học là ngôn ngữ của khoa học, thì hàm số và đạo hào chính là công cụ sắc bén để Vật lý mô tả sự vận dộng của thế giới tự nhiên. Trong tự nhiên, không có hiện tượng nào đứng yên cố định; mọi đại lượng từ vị trí, vận tốc, nhiệt độ cho đến điện tích đều liên tục biến đổi theo thời gian và không gian. Nếu hàm số giúp chúng ta thiết lập bức tranh toàn cảnh về mối liên hệ giữa các đại lượng, thì đạo hàm lại cho phép 'chụp lại' và phân tích chính xác tốc dộ biến thiên tức thời của các hiện tượng đó - điều mà các công thức đại số sơ cấp không thể làm được.
+\begin{itemize}
+    \item  Trong lịch sử phát triển của khoa  học, Cơ học chính là nơi giao thoa đầu tiên và rõ nét nhất giữa Giải tích và Vật lý. Việc mô tả sự chuyển động của các vật thể trong không gian đòi hỏi phải đo lường sự thay đổi vị trí theo từng khoảnh khác thời gian. Chính từ nhu cầu thực tiễn đó, hàm số và đạo hàm đã trở  thành công cụ nền tảng để thiết lập các đại lượng động lực học cốt lõi như vận tốc, gia tốc:
+    \begin{itemize}
+        \item \textit{Vận tốc tức thời:} $v(t) = s'(t) = \frac{\mathrm{d}s}{\mathrm{d}t}$
+        \item \textit{Gia tốc tức thời:} $a(t) = v'(t) = s''(t) = \frac{\mathrm{d}^2s}{\mathrm{d}t^2}$
+    \end{itemize}
+    Chú ý:
+    \begin{itemize}
+    \item Nếu một chất điểm chuyển động theo chiều dương được quy ước thì $v(t)>0$, chuyển động ngược chiều dương được quy ước thì $v(t)$.
+    \item Nếu một chất điểm dừng lại hay đứng yên thì $v(t)=0$.
+    \item Nếu một chất điểm tăng tốc thì $a(t)>0$, giảm tốc thì $a(t)<0$.
+    \item Trong một số bài toán vật chuyển động lên xuống, hàm chuyển động thường được kí hiệu là $h(t)$, khi đó $v(t)=h'(t)$ và $a(t)=h''(t)$.
+    \end{itemize}
+    \end{itemize}
+    
+    \item \textbf{Điện từ học:} Không chỉ dừng lại ở việc mô tả sự chuyển động của các vật thể vĩ mô trong Cơ học, công cụ hàm số và đạo hàm tiếp tục phát huy sức mạnh khi chung ta bước sang lĩnh vực Điện từ học. Tại đây, đối tượng khảo sát chuyển từ các vật thể hữu hình sang dòng chảy của các hạt điện tích vi mô và sự biến thiên của trường lực. Việc phân tích tốc độ biến thiên của điện tích hay từ thông theo thời gian giúp chung ta giải mã các hiện tượng điện từ cốt lõi:
+    \begin{itemize}
+        \item \textit{Cường độ dòng điện tức thời:} $i(t) = q'(t)$
+        \item \textit{Suất điện động cảm ứng:} $e(t) = -\Phi'(t)$
+    \end{itemize}
+\end{itemize}
+
+\subsection{Ứng dụng trong Hóa học}}
+Trong Hóa học,tốc độ diễn ra của một phản ứng không phải lúc nào cũng cố định mà liên tục thay đổi theo thời gian tùy thuốc vào nồng độ chất phản ứng còn lại. Để đo lường chính xác tốc dộ phản ứng tại từng thời điểm xác định thay vì chỉ tính giá trị trung bình, công cụ đạo hàm được ứng dụng trực tiếp. Do đó, mối liên hệ giữa nồng độ chất tham gia và tốc độ phoản ứng mô hình hóa qua biểu thức:
+Tốc độ phản ứng hóa học tức thời tại thời điểm $t$ biểu diễn qua tốc độ biến thiên nồng độ chất phản ứng $C(t)$:
+\[ v(t) = -C'(t) \]
+
+\subsection{Ứng dụng trong Sinh học}}
+Trong nghiên cứu sinh thái học, việc tính số lượng cá thể trung bình thường không phản ánh hết sự bùng nổ hay suy giảm sinh sản tại một thời điểm cụ thể. Việc chuyển từ số lượng cá thể sang tốc độ biến thiên theo thời gian giúp các nhà sinh học nắm bắt được trạng thái phát triển tức thời của quần thể.
+
+\noindent Một vài ứng dụng điển hình của đạo hàm trong Sinh học là việc xác định tốc độ biến động kích thước quần thể sinh vật theo thời gian.
+
+\noindent Nếu $P=P(t)$ là số lượng cá thể tại thời điểm $t$, thì dạo hàm $P'(t)$ chính là tốc dộ tăng trưởng tức thời của quần thể đó tại thời điểm $t$.
+\[ v_{\text{tăng trưởng}} = P'(t) \]
+\begin{itemize}
+    \item $P'(t) > 0$: Quần thể đang phát triển.
+    \item $P'(t) < 0$: Quần thể đang suy giảm.
+    \item $P'(t) = 0$: Quần thể đạt trạng thái cân bằng sinh thái.
+\end{itemize}
+
+\subsection{Ứng dụng trong Hình học}
+Trong thực tế sản xuất và thiết kế kỹ thuật, một bài toán mang tính quyết định luôn được đặt ra là: làm thế nào để tối ưu hóa không gian chứa (thể tích, diện tích) hoặc cực tiểu hóa chi phí vật liệu sản xuất. Bằng cách ứng dụng phép tính giải tích, các đại lượng hình học chưa biết sẽ được mô hình hóa thành một hàm số một biến $f(x)$. Khi đó, việc xác định các kích thước tối ưu thực chất là bài toán tìm điểm cực trị của hàm số thông qua phép tính đạo hàm.
+\\
+\textbf{Thuật toán tối ưu hóa hình học tổng quát:}
+\begin{enumerate}
+    \item \textbf{Bước 1:} Chọn biến đại diện $x \in D$ (bán kính $r$, chiều cao $h$, cạnh $x$).
+    \item \textbf{Bước 2:} Thiết lập hàm mục tiêu $y = f(x)$ biểu diễn thể tích, diện tích hoặc chu vi.
+    \item \textbf{Bước 3:} Tìm điểm dừng $f'(x) = 0 \implies x_0$. Kiểm tra $f''(x_0) < 0$ (Cực đại) hoặc $f''(x_0) > 0$ (Cực tiểu).
+    \item \textbf{Bước 4:} Đưa ra kết luận kích thước tối ưu cho bài toán.
+\end{enumerate}
+
+\newpage
+
+\section{Chương 3: Bài tập minh họa và Lời giải chi tiết}
+
+\subsection{Bài toán tối ưu hóa doanh thu, lợi nhuận, chi phí}
+
+\begin{problembox}{Bài toán 1: Mức thuế phụ thu tối ưu hóa nguồn thu và lợi nhuận}
+Một doanh nghiệp sản xuất độc quyền một loại sản phẩm. Giả sử khi sản xuất hết $x$ sản phẩm đó $(0 < x \le 2000)$, tổng số tiền doanh nghiệp thu được (đơn vị: chục nghìn đồng) là $f(x) = 2000x - x^2$ và tổng chi phí (đơn vị: chục nghìn đồng) doanh nghiệp chi ra là $g(x) = x^2 + 1400x + 50$. Giả sử mức thuế phụ thu trên một đơn vị sản phẩm bán được là $t$ (chục nghìn đồng) $(0 < t < 300)$. Tính mức thuế phụ thu $t$ (trên một đơn vị sản phẩm) sao cho nhà nước nhận được số tiền thuế phụ thu lớn nhất và doanh nghiệp cũng thu được lợi nhuận lớn nhất theo mức thuế phụ thu đó.
+\end{problembox}
+
+\noindent\textbf{Phân tích bài toán:}
+
+- Doanh nghiệp sản xuất $x$ sản phẩm ($0 < x \le 2000$). 
+
+- Doanh thu tổng: $f(x) = 2000x - x^2$ (đơn vị: chục nghìn đồng).
+
+- Chi phí tổng: $g(x) = x^2 + 1440x + 50$ (đơn vị: chục nghìn đồng).
+
+- Mức thuế phụ thu: $t$ (đơn vị: chục nghìn đồng trên 1 sản phẩm).
+
+- Tổng tiền thuế phụ thu nhà nước thu: $k(t) = t \cdot x$.
+
+- Lợi nhuận doanh nghiệp sau thuế: $h(x) = f(x) - g(x) - k(t)$.
+
+\noindent\textbf{Lời giải chi tiết:}
+
+Lợi nhuận doanh nghiệp sau thuế là:
+\[ h(x) = (2000x - x^2) - (x^2 + 1440x + 50) - tx = -2x^2 + (560 - t)x - 50 \quad (0 < x \le 2000) \]
+
+Ta có: $h'(x) = -4x + 560 - t = 0 \implies x = \frac{560 - t}{4} \in (0; 2000)$.
+
+Lợi nhuận doanh nghiệp đạt tối đa tại sản lượng $x = \frac{560 - t}{4}$. 
+
+Khi đó, tổng thuế nhà nước thu được là hàm theo $t$:
+\[ k(t) = t \cdot x = t \cdot \left(\frac{560 - t}{4}\right) = -\frac{t^2}{4} + 140t \]
+
+Ta có $k'(t) = -\frac{t}{2} + 140 = 0 \implies t = 280$ (chục nghìn đồng).
+
+\begin{center}
+\begin{tabular}{c|lcccccr}
+$t$ & $0$ & & $280$ & & $300$ \\ 
+\hline
+$k'(t)$ & & $+$ & $0$ & $-$ & \\ 
+\hline
+$k(t)$ & & $\nearrow$ & $19600$ & $\searrow$ & \\ 
+\end{tabular}
+\end{center}
+
+\noindent\textbf{Kết luận:} Mức thuế phụ thu tối ưu là $t = 280$ (chục nghìn đồng) $= 2.800.000\text{ VNĐ/sản phẩm}$, khi đó bán hết $x = 70$ sản phẩm.
+
+\vspace{0.5cm}
+
+\begin{problembox}{Bài toán 2: Định giá vé xem biểu diễn nhà hát}
+Giám đốc một nhà hát A đang phân vân trong việc xác định mức giá vé xem các chương trình được trình chiếu trong nhà hát. Việc này rất quan trọng nó sẽ quyết định nhà hát thu được bao nhiêu lợi nhuận từ các buổi trình chiếu. Theo những cuốn sổ ghi chép của mình, ông ta xác định được rằng: nếu giá vé vào cửa là $20 \text{ USD/người}$ thì trung bình có $1000$ người đến xem. Nhưng nếu tăng thêm $1 \text{ USD/người}$ thì sẽ mất $100$ khách hàng hoặc giảm đi $1 \text{ USD/người}$ thì sẽ có thêm $100$ khách hàng trong số trung bình. Biết rằng, trung bình, mỗi khách hàng còn đem lại $2 \text{ USD}$ lợi nhuận cho nhà hát trong các dịch vụ đi kèm. Hãy giúp giám đốc nhà hát này xác định xem cần tính giá vé vào cửa là bao nhiêu để thu nhập là lớn nhất.
+\end{problembox}
+
+\noindent\textbf{Phân tích bài toán:}
+
+- Giá vé ban đầu: $20 \text{ USD/người}$.
+
+- Số lượng khách ban đầu: $1000$ người.
+
+- Khi tăng hoặc giảm $1 \text{ USD/người}$
+
++ Khách giảm: $100$ người.
+
++ Khách tăng: $100$ người.
+
+- Lợi nhuận thêm từ dịch vụ đi kèm: $2 \text{ USD/người}$.
+
+\noindent\textbf{Lời giải chi tiết:}
+
+Gọi mức điều chỉnh giá vé là $x$ ($\text{USD}$), điều kiện $x + 20 > 0$.
+\begin{itemize}
+    \item Giá vé mới: $20 + x$ ($\text{USD}$).
+    \item Số lượng khách hàng: $1000 - 100x$ (người).
+\end{itemize}
+
+Tổng lợi nhuận thu được:
+\[ f(x) = (20 + x + 2)(1000 - 100x) = -100x^2 - 1200x + 22000 \]
+
+Đạo hàm: $f'(x) = -200x - 1200 = 0 \iff x = -6$.
+
+Lập bảng biến thiên dễ thấy $f(x)$ đạt giá trị lớn nhất tại $x = -6$.
+
+\noindent\textbf{Kết luận:} Giá vé tối ưu cần bán là $20 - 6 = 14\text{ USD/vé}$.
+
+\subsection{Bài toán chuyển động cơ học}
+
+\begin{problembox}{Bài toán: Tìm vận tốc cực đại trong chuyển động}
+Một vật chuyển động theo quy luật $S(t) = -t^3+ 18t^2$, với $t\text{giây}$ là khoanrgg thời gian tính từ lúc vật bắt đầu chuyển động và $S \text{mét}$ là quãng đường vật đi được trong thời gian đó. Hỏi trong khoảng thời gian $10 \text{giây}$, kể từ lúc bắt đầu chuyển động, vận tốc lớn nhất của vật bằng bao nhiêu?
+\end{problembox}
+
+\noindent\textbf{Phân tích bài toán:}
+
+- $S(t) = -t^3 + 18t^2$: Quãng đường vật đi được trong $t$ giây.
+
+- Vận tốc tức thời $v(t)=S'(t)$: Đạo hàm của hàm $S(t)$.
+
+- Tím giá trị lớn nhất của $v(t)$ trên đoạn $[0 ; 10]$.
+
+\end{problembox}
+
+\noindent\textbf{Lời giải chi tiết:}
+
+Hàm vận tốc tức thời là đạo hàm của quãng đường:
+\[ v(t) = S'(t) = -3t^2 + 36t \quad \text{với } t \in [0; 10] \]
+
+Tìm cực trị vận tốc bằng đạo hàm gia tốc:
+\[ v'(t) = -6t + 36 = 0 \iff t = 6\text{ (giây)} \]
+
+Tính các giá trị tại biên và điểm dừng:
+\[ v(0) = 0\text{ m/s}, \quad v(10) = 60\text{ m/s}, \quad v(6) = 108\text{ m/s} \]
+
+\noindent\textbf{Kết luận:} Vận tốc lớn nhất vật đạt được là $v_{\max} = 108\text{ m/s}$ tại thời điểm $t = 6\text{ s}$.
+
+\subsection{Bài toán tối ưu hóa quãng đường, thời gian}
+
+\begin{problembox}{Bài toán 1: Lộ trình tối ưu chèo thuyền}
+Anh Ba đang trên chiếc thuyền tại vị trí $A$ cách bờ sông $2\text{ km}$, anh dự định chèo thuyền vào bờ và tiếp tục chạy bộ theo một đường thẳng để đến một địa điểm $B$ tọa lạc ven bờ sông, $B$ cách vị trí $O$ trên bờ gần với thuyền nhất là $4\text{ km}$. Biết rằng anh Ba chèo thuyền với vận tốc $6\text{ km/h}$ và chạy bộ trên bờ với vận tốc $10\text{ km/h}$. Khoảng thời gian ngắn nhất để anh Ba từ vị trí xuất phát đến được điểm $B$ là?
+\end {problembox}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.5\textwidth]{hinh5.png}
+    \label{fig:hinh5.png}
+\end{figure}
+
+\noindent\textbf{Phân tích bài toán:}
+
+- $OA = 2\text{ km}$; $OB = 4\text{ km}$
+
+- Vận tốc chèo thuyền: $6\text{ km/h}$.
+
+- Vận tốc chạy bộ: $10\text{ km/h}$.
+
+- Đường di chuyển: Chèo thuyền từ $A$ đến một điểm $P$, sau đó chạy bộ từ $P$ đến $B$.
+
+\noindent\textbf{Lời giải chi tiết:}
+
+Đặt $OP = x\text{ km}$ ($0 < x < 4$), suy ra $PB = 4 - x$ và $AP = \sqrt{4 + x^2}$.
+
+Tổng thời gian di chuyển:
+\[ t(x) = \frac{\sqrt{4 + x^2}}{6} + \frac{4 - x}{10} \quad (\text{giờ}) \]
+
+Đạo hàm:
+\[ t'(x) = \frac{x}{6\sqrt{4 + x^2}} - \frac{1}{10} = 0 \iff 5x = 3\sqrt{4 + x^2} \iff 16x^2 = 36 \iff x = 1,5\text{ km} \]
+
+Thay $x = 1,5$ vào $t(x)$ thu được thời gian nhỏ nhất:
+\[ t_{\min} = t(1,5) = \frac{2}{3}\text{ giờ} = 40\text{ phút} \]
+
+\begin{problembox}{Bài toán 2: Xây cầu tối ưu khoảng cách}
+Hai thành phố $A$ và $B$ cách nhau một con sông. Người ta xây dựng một cây cầu $È$ bắc qua sông, biết rằng thành phố $A$ cách con sông một khoảng là $4 \text { km}$ và thành phố $B$ cách con sông một khoảng là $6\text{ km}$, biết $HE+KF=20 \text{ km}$ và độ dài $EF$ không đổi. Hỏi xây
+cây cầu cách thành phố $A$ là bao nhiêu $km$ để đường đi từ thành phố $A$ đến thành phố $B$ là ngắn nhất (đi theo đường $AEFB$)?
+\end {problembox}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.5\textwidth]{hinh4.png}
+    \label{fig:hinh4.png}
+\end{figure}
+
+\noindent\textbf{Phân tích bài toán:}
+
+- Khoảng cách: $AH=4 \text{ km}$  (từ $A$ đến sông); $BK= 6\text{ km}$ (từ $B$ đến sông).
+
+- Tổng chiều dài $HE+KF=20 \text{ km}$.
+
+- Yêu cầu: Vì $EF$ không đổi nên $AB$ ngắn nhất khi $AE+BF$ nhỏ nhất.
+
+\noindent\textbf{Lời giải chi tiết:}
+
+Đặt $HE=x, FK=y$, với $x,y>0$
+
+Ta có: $HE+KF=20 \Rightarrow x+y=20$.
+
+\begin{cases}
+$AE=\sqrt{16+x^2}$\\
+$BF=\sqrt{36+y^2}=\sqrt{36+(20-x)^2}$
+\end{cases}
+
+Ta có $AE+BF= \sqrt{x^2+16} + \sqrt{(20-x)^2+36} = \sqrt{x^2+16} + \sqrt{x^2-40x+436}= f(x)$
+
+Lập bảng biến thiên của hàm $f(x)$:\\
+
+$f'(x)= \frac{x} {\sqrt{x^2+16}} + \frac{x-20}{\sqrt{x^2-40x+436}}, \forall x \in (0;20)$.
+
+$f'(x) =0  \Rightarrow x = 8$
+
+Bảng biến thiên:
+\begin{center}
+\begin{tabular}{c|lcccccr}
+$x$ & $0$ & & $8$ & & $20$ &\\
+\hline
+$f'(x)$ & & - & $0$ & + &\\
+\hline
+$f(x)$ & &  \searrow & $10\sqrt{5}$ & \nearrow &
+\end{tabular}
+\end{center}
+Vậy $AE= \sqrt{8^2 + 16} \approx 8,94 \text {km}$.
+
+\subsection{Bài toán tối ưu hóa trong Sinh học}
+
+\begin{problembox}{Bài toán: Tốc độ bùng phát vi-rút}
+Sự tăng trưởng của một loại virut được xác định bởi hàm số $p(t) = \frac{800}{1 + 7\mathrm{e}^{-0,2t}}$, trong đó $t$ là thời gian được tính theo ngày. Ở ngày thứ bao nhiêu thì tốc độ tăng trưởng của loài virut trên là lớn nhất?
+\end{problembox}
+
+\noindent\textbf{Phân tích bài toán:} 
+
+Hàm số số lượng virus: $p(t) = \frac{800}{1 + 7\mathrm{e}^{-0{,}2t}}$ (với $t \ge 0$, đơn vị: ngày). 
+
+Hàm số tốc độ tăng trưởng: $v(t) = p'(t)$. 
+
+Yêu cầu bài toán: Tìm thời điểm $t$ (ngày thứ bao nhiêu) để $v(t) = p'(t)$ đạt giá trị lớn nhất.
+
+
+\noindent\textbf{Lời giải chi tiết:}
+
+Tốc độ tăng trưởng là $v(t) = p'(t) = \frac{1120 \cdot \mathrm{e}^{0,2t}}{(\mathrm{e}^{0,2t} + 7)^2}$.
+
+Xét đạo hàm $v'(t) = \frac{224 \cdot \mathrm{e}^{0,2t}(7 - \mathrm{e}^{0,2t})}{(\mathrm{e}^{0,2t} + 7)^3} = 0 \iff \mathrm{e}^{0,2t} = 7 \iff t = 5\ln 7 \approx 9,73$.
+
+\noindent\textbf{Kết luận:} Tốc độ bùng phát đạt lớn nhất vào khoảng \textbf{ngày thứ 10}.
+
+\subsection{Bài toán tối ưu hóa trong Hình học}
+
+\begin{problembox}{Bài toán: Tối ưu diện tích in chữ trên trang sách}
+Một trang sách có dạng hình chữ nhật với diện tích là $384\text{ cm}^2$. Sau khi để lề trên và lề dưới đều là $3\text{ cm}$, để lề trái và lề phải đều là $2\text{ cm}$. Phần còn lại của trang sách được in chữ. Kích thước tối ưu của trang sách là bao nhiêu để phần in chữ trên trang sách có diện tích lớn nhất?
+\end{problembox}
+
+\noindent\textbf{Lời giải chi tiết:}
+
+Gọi kích thước trang sách là chiều rộng $x$ và chiều dài $y$ ($x, y > 0$).
+\[ S = x \cdot y = 384 \implies y = \frac{384}{x} \]
+
+Diện tích in chữ:
+\[ S_1 = (x - 4)(y - 6) = (x - 4)\left(\frac{384}{x} - 6\right) = 408 - 6x - \frac{1536}{x} \]
+
+Đạo hàm:
+\[ S_1' = -6 + \frac{1536}{x^2} = 0 \iff 6x^2 = 1536 \iff x = 16\text{ cm} \]
+
+Suy ra $y = \frac{384}{16} = 24\text{ cm}$.
+
+\noindent\textbf{Kết luận:} Kích thước trang sách tối ưu là rộng $16\text{ cm}$ và dài $24\text{ cm}$.
+
+\newpage
+
+\section*{Kết luận}
+\addcontentsline{toc}{section}{Kết luận}
+
+Dự án đã hoàn thành mục tiêu làm sáng tỏ vai trò và tính ứng dụng đa dạng của hàm số và đạo hàm trong thực tiễn. Qua việc phân tích các bài toán thực tế, từ việc mô hình hóa tốc độ tăng trưởng của quần thể vi sinh vật trong Sinh học đến các bài toán tối ưu hóa kích thước trong Hình học và Kỹ thuật, đề tài khẳng định đạo hàm chính là công cụ ngôn ngữ sắc bén để đo lường và dự báo sự biến thiên của thế giới xung quanh.
+
+Kết quả nghiên cứu cho thấy việc thành thạo kỹ năng chuyển đổi từ vấn đề thực tế sang mô hình toán học không chỉ củng cố tư duy giải tích thuần túy, mà còn phát triển tư duy tối ưu hóa trong việc đưa ra các quyết định thực tiễn. Hy vọng tiểu luận sẽ là tài liệu tham khảo bổ ích, góp phần phục vụ công tác học tập, nghiên cứu và giảng dạy Toán học.
+
+\newpage
+
+\section*{Tài liệu tham khảo}
+\addcontentsline{toc}{section}{Tài liệu tham khảo}
+
+\begin{enumerate}
+    \item Hà Huy Khoái (Tổng Chủ biên). \textit{Toán 11 - Tập 2 (Kết nối tri thức với cuộc sống)}. NXB Giáo dục Việt Nam.
+    \item Hà Huy Khoái (Tổng Chủ biên). \textit{Toán 12 - Tập 1 (Kết nối tri thức với cuộc sống)}. NXB Giáo dục Việt Nam.
+    \item Đinh Xuân Nhị. \textit{Tư duy toán thực tế hàm số và ứng dụng lớp 12}. 
+    \item Nguyễn Tiến Đạt, Trần Phương. \textit{Tư duy giải các bài toán thực tế}. NXB Thanh niên.
+    \item Đặng Việt Đông. \textit{Toán thực tế Ứng dụng đạo hàm và khảo sát hàm số}. 
+\end{enumerate}
+
+\end{document}
